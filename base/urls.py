@@ -15,6 +15,6 @@ urlpatterns = [
     path('community/', views.community, name='community'), 
     path('messages/', messages_view, name='messages'), #messages url connected siya sa view.py yung messages_view
     path('homemessages/', messages_home, name='messageshome'),
-    
+   
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

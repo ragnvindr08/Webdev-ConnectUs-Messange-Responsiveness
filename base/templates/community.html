@@ -1,8 +1,9 @@
 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grinding Zone</title>
+  <title>Community</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   
@@ -11,46 +12,359 @@
 <body>
 
   <style>
-    .sidenav {
-      margin-top:50px;
-    height: 100%;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
-     top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-    }
+    .search-bar {
+      position: absolute;
+      top: 94%; /* Adjust the top position as needed */
+      left: 33%;
+      transform: translateX(-50%);
+      background-color: #2b2b2b;
+      padding: 10px 5px ; /* Long padding on left and right */
+      width: 100%;
+      max-width: 550px; /* Limiting the maximum width */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 999; /* Ensure the search bar is above other content */
+      display: flex; /* Enable flexbox */
+      align-items: center; /* Center vertically */
+      justify-content: space-between; /* Distribute items evenly */
+      border-radius: 5px;
+      margin-left:3px;
+      
+    
+  }
 
-.sidenav a {
+  /* Styles for the input */
+  .search-bar input[type="text"] {
+      flex: 1; /* Take remaining space */
+      padding: 3px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
 
-padding: 6px 8px 6px 16px;
-text-decoration: none;
-font-size: 15px;
-color: #818181;
-display: block;
+  }
+
+  /* Styles for the button */
+  .search-bar button {
+      width: 80px;
+      height: 40px;
+      border: none;
+      border-radius: 5px;
+      background-color: black;
+      color: #fff;
+      cursor: pointer;
+      font-size:70%;
+     
+    
+  }
+
+  .slideshow-container {
+    max-width: 1280px;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    height: auto;
+    margin-right: 50px;
+    /* Initial box shadow */
+    box-shadow: 5px 5px 3px 3px rgba(0, 0, 0, 0.9);
+    padding-bottom:-20px;
+    filter: grayscale(30%);
 }
 
-.sidenav a:hover {
-  color: #f1f1f1;
+  .slide {
+    float: center; /* Float images to the left */
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+
+  }
+
+  .slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    z-index: 0;
+    transition: opacity 0.3s ease; /* Smooth transition */
+  }
+  
+  .slide:hover::before {
+    background: linear-gradient(rgba(43, 43, 43, 0.5), rgba(43, 43, 43, 0.5)); /* Gradient with 30% opacity */
+  }
+
+  .custom-alert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2b2b2b;
+    color: white;
+    padding: 90px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+   
+    text-align: center;
+    z-index: 1000;
+  
+}
+
+.custom-alert img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    margin-top:50px;
+}
+.custom-alert button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.custom-alert button:hover {
+    background-color: #0056b3;
+}
+
+.message-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  right: 1%; /* Adjust as needed */
+  top: 50%; /* Adjust as needed */
+  transform: translateY(-50%);
+  margin-top: 6px;
+  cursor: move; /* Set cursor to move */
+}
+.message-container.dragging {
+  cursor: grabbing;
+}
+.message-toggle {
+  background-color: black;
+  color: #fff;
+  padding:8px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.message-toggle.active {
+  background-color: #dc3545;
+}
+
+#message-icon {
+  margin-right: 5px;
+}
+
+#message-text {
+  display: inline-block;
+  
+  
+}
+
+.message-box {
+  background: #2b2b2b;
+  margin-top:20px;
+  padding: 55px;
+  position: fixed;
+  top: 50%;
+  left: -300px;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px black;
+}
+
+.container {
+  margin-top:30%;
+}
+
+@media (max-width: 720px) {
+
+  .search-bar {
+    display: none;    
+}
+.slideshow-container {
+  display:flex;
+  max-width:1280px;
+  margin: auto;
+  overflow: hidden;
+  height: auto;
+  margin-right: -250px;
+  /* Initial box shadow */
+  box-shadow: 5px 5px 3px 3px rgba(0, 0, 0, 0.9);
+  padding-bottom:-20px;
+  filter: grayscale(30%);
+  margin-top:-200px;
+}
+
+.slide {
+  float: center; /* Float images to the left */
+  width: 100%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+
+}
+
+.slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  z-index: 0;
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.slide:hover::before {
+  background: linear-gradient(rgba(43, 43, 43, 0.5), rgba(43, 43, 43, 0.5)); /* Gradient with 30% opacity */
+}
+
+.custom-alert {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #2b2b2b;
+  color: white;
+  padding: 90px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+ 
+  text-align: center;
+  z-index: 1000;
+
+}
+
+.custom-alert img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  margin-top:50px;
+}
+.custom-alert button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.custom-alert button:hover {
+  background-color: #0056b3;
+}
+
+.message-container {
+display: none;
+justify-content: flex-start;
+align-items: center;
+position: fixed;
+right: 1%; /* Adjust as needed */
+top: 50%; /* Adjust as needed */
+transform: translateY(-50%);
+margin-top: 6px;
+cursor: move; /* Set cursor to move */
+}
+.message-container.dragging {
+cursor: grabbing;
+}
+.message-toggle {
+background-color: black;
+color: #fff;
+padding:8px;
+border-radius: 8px;
+cursor: pointer;
+display: flex;
+align-items: center;
+cursor: grabbing;
+}
+
+.message-toggle.active {
+background-color: #dc3545;
+}
+
+#message-icon {
+margin-right: 5px;
+}
+
+#message-text {
+display: inline-block;
+
+
+}
+
+.message-box {
+background: #2b2b2b;
+position: fixed;
+top: 60%;
+left: -300px;
+transform: translate(-50%, -50%);
+border-radius: 8px;
+box-shadow: 2px 2px 2px 2px black;
+}
+
+.container {
+  margin-top:450%;
+  
+}
+
+.col h5{
+  font-size: 13px;
+}
+
+.gradient-text{
+  margin-left:35%;
+  
+ 
+}
 }
 </style>
+  <body>
+   
+<div>
+    <div class="search-bar"><img style="width:auto; height:37px;" src="/static/css/images/logo.png" alt="Connectus">
+      <input type="text" placeholder="Search News...">
+      <button type="submit">Search</button>
+  </div>
+    <div style="background-color: #2b2b2b;" class="slideshow-container">
+      <div class="slide">
+        <h5 style="color: white; margin-left: 10px;">ConnectUs Progress Development</h5>
+        <img src="/static/css/images/slide4.png" alt="Slide 1">
+      </div>
+    
+      <div class="slide">
+        <h5 style="color: white; margin-left: 10px;">ConnectUs Progress Development</h5>
+        <img src="/static/css/images/slide5.png" alt="Slide 2">
+      </div>
+    
+      <div class="slide">
+        <h5 style="color: white; margin-left: 10px;">ConnectUs Progress Development</h5>
+        <img  src="/static/css/images/slide6.png" alt="Slide 3">
+      </div>
 
-<div class="sidenav"> 
-  <a href="/home/">Developers</a>   <!--Kahit mga description lng muna ng content-->
-  <a href="connections.html">Connections</a>
-  <a href="newsupdate.html">News and Updates</a>
-  <a href="/community/">Community</a>
-  <a href="friends.html">Friends</a>
-  <a href="/messages/">Messages</a>
-  <a href="#contact">Privacy</a>
-  <a href="#clients">About</a>
-  <a href="#contact">Settings</a>
-</div>
+      <div class="slide">
+        <h5 style="color: white; margin-left: 10px;">ConnectUs</h5>
+        <img  src="/static/css/images/connect.png" alt="Slide 4">
+        
+      </div>
+      
+    </div
+    
+    <body>
 
+    
       <script>
+     
         var slideIndex = 0;
         showSlides();
       
@@ -65,25 +379,24 @@ display: block;
           slides[slideIndex-1].style.display = "block";
           setTimeout(showSlides, 4000); // Change image every 2 seconds
         }
+
       </script>
     </div>
 
  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     
-    <a class="navbar-brand" href=""><img src="/static/css/images/" alt="Grinding Zone"></a>
+    <a  class="navbar-brand" href=""><img style="width:auto; height:40px;" src="/static/css/images/logo.png" alt="Connectus"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> <!-- Added justify-content-end class -->
       <ul style="font-size:15px;" class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/home/">Home</a>
+          <a class="nav-link" href="http://127.0.0.1:8000/">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Settings</a>
-        </li>
-       
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/registrations/signup.html">Sign Up</a>
@@ -93,25 +406,193 @@ display: block;
         <input type="checkbox" class="custom-control-input" id="darkModeSwitch">
         <label class="custom-control-label" for="darkModeSwitch">Dark Mode</label>
       </div>
+      
     </div>
   </nav>
 
-
-  <!--eto lang papalitan sa baba-->
-  <div style="margin-left:15%; margin-top:10%; margin-right:10%;">
-
-  <section> <!--kayo nlng bhala maglagay(edit) odikaya kahit shuffle like image sa taas -->
-    <h2>Community</h2>
-    <p>On ConnectUs, we're building more than just a social network; we're nurturing a dynamic online community where individuals can create meaningful connections based on shared interests, values, and experiences. Our platform empowers users to engage in open dialogue, collaborate on projects, support one another in achieving common goals, and yes, make friends along the way. From local events and volunteer opportunities to lively discussions and resource sharing, ConnectUs is the digital gathering place where community bonds are strengthened, ideas are sparked, and positive change takes root. Join us and be a part of something bigger—where every connection matters.</p>
-    </section>
-          <img src="picture.png" alt="" style="width:100%">
-
+  <div class="sidenav"> 
+    <a href="#about">Developers</a>
+    <a href="#services">Connections</a>
+    <a href="#clients">News and Updates</a>
+    <a href="/community/">Community</a>
+    <a href="#clients">Friends</a>
+    <a href="/messages/">Messages</a>
+    <a href="#clients">Privacy</a>
+    <a href="#contact">About</a>
+    <a href="#clients">Settings</a>
+    
   </div>
+
+<div>
+<div class="container">
+  <h1></h1>
+  <p></p>
+</div>
+
+      
+          <section>
+            <div class="container">
+              <div class="section">
+                <div class="row">
+                <h2>Community<h2>
+                  <div class="col">
+                  <h5> On ConnectUs, we're building more than just a social network; we're nurturing a dynamic online community where individuals can create meaningful connections based on shared interests, values, and experiences. Our platform empowers users to engage in open dialogue, collaborate on projects, support one another in achieving common goals, and yes, make friends along the way. From local events and volunteer opportunities to lively discussions and resource sharing, ConnectUs is the digital gathering place where community bonds are strengthened, ideas are sparked, and positive change takes root. Join us and be a part of something bigger—where every connection matters.
+                  </h5><br>   
+                  <h5>Trending topics and popular discussions across the platform.</h5>  
+                  <h5>Recommendations for groups, events, and content based on user preferences and activity.</h5>  
+                  <h5>Tools for organizing and managing events, polls, and fundraisers.</h5>  
+                  <h5>Integration with other social media platforms for seamless sharing and cross-platform connectivity.</h5>  
+                </div>
+              </section>
+  
+              
+</div>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+<div class="log-out">  
+  <a href="{% url 'base:logout' %}" style="position: fixed; color: white; background-image: linear-gradient(to right, #0c0c14, black); text-decoration: none; padding: 10px 20px; border-radius: 5px; transition: color 0.3s, background-color 0.3s;" onmouseover="this.style.color='red'; this.style.backgroundColor='white'" onmouseout="this.style.color='white'; this.style.backgroundColor='transparent'">User Out</a>
+</div>
+
+<div class="gradient-text">
+  <h4>Welcome, {{ user.username }} <img style="width:20px; height;20px; margin-top: -10px;" src="/static/css/images/verified.png" alt="icon"> </h4>  <!--base.html nakakonek-->
+</div>
+
+<!--
+<div id="customAlert" class="custom-alert">
+  <img style="width:auto; height:80px;" src="/static/css/images/logo.png" alt="Welcome Icon">
+  <div class="gradient-text1">
+  <p style="margin-bottom:60px;"> Welcome Home, {{ user.username }}</p>
+  </div>
+  <button onclick="closeAlert()">Exit</button>
+</div> -->
+
+<div class="message-container draggable">
+<div class="message-container">
+  <div class="message-toggle" onclick="toggleMessage()"><img style="width:auto; height:50px;" src="/static/css/images/message.png">
+    <span id="message-icon"></span>
+    <span id="message-text"><h1></span>
+  </div>
+  <div class="message-box" style="display: none;">
+    <div id="message-content">
+       
+    </div>
+    <h5 style=" margin-top:10px; "><a style="text-decoration:none ;"href="/messages/">Go to Chat</a></h5>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+</div>
+<script>
+  if (window.innerWidth > 768) {
+    showAlert();
+}
+
+function showAlert() {
+    document.getElementById('customAlert').style.display = 'block';
+}
+
+function closeAlert() {
+    document.getElementById('customAlert').style.display = 'none';
+}
+
+function toggleMessage() {
+  var messageBox = document.querySelector('.message-box');
+  var messageContent = document.getElementById('message-content');
+
+  if (messageBox.style.display === 'none' || messageBox.style.display === '') {
+    messageBox.style.display = 'block';
+    messageContent.innerHTML = ''; // Clear previous content
+    // Load content into the message box
+    loadMessageContent();
+  } else {
+    messageBox.style.display = 'none';
+  }
+
+  var messageToggle = document.querySelector('.message-toggle');
+  messageToggle.classList.toggle('active');
+}
+
+// Function to load message content
+function loadMessageContent() {
+  // Here, you can load content into the message box dynamically
+  // For example, you can use AJAX to fetch content from a server
+  // Example:
+  var messageContent = document.getElementById('message-content');
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // On successful response, update the message content
+        messageContent.innerHTML = xhr.responseText;
+
+        // Set the desired size for the message content
+        messageContent.style.width = '120%'; // Set width
+        messageContent.style.height = '50%'; // Set height
+       
+      } else {
+        // Handle errors
+        messageContent.innerHTML = 'Failed to load content';
+      }
+    }
+  };
+
+  
+  xhr.open('GET', '/homemessages/', true);
+  xhr.send();
+}
+const messageContainer = document.querySelector('.message-container');
+
+let offsetX;
+let offsetY;
+let isDragging = false;
+
+messageContainer.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  const rect = messageContainer.getBoundingClientRect();
+  offsetX = e.clientX - rect.left;
+  offsetY = e.clientY - rect.top;
+
+  // Add a class to change cursor style when dragging
+  messageContainer.classList.add('dragging');
+
+  // Set z-index to bring the element to the top while dragging
+  messageContainer.style.zIndex = 1000;
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    // Calculate the new position based on the offset
+    messageContainer.style.left = e.clientX - offsetX + 'px';
+    messageContainer.style.top = e.clientY - offsetY + 'px';
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  if (isDragging) {
+    isDragging = false;
+
+    // Remove the dragging class and reset cursor style
+    messageContainer.classList.remove('dragging');
+    messageContainer.style.cursor = 'move';
+  
+    // Reset z-index after dragging
+    messageContainer.style.zIndex = '';
+  }
+});
+</script>
+{% endblock content %}
+
 </body>
-
-
 </html>
 
 
 
 
+
+
+ 

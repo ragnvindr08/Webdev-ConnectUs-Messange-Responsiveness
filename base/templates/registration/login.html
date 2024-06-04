@@ -23,13 +23,6 @@
     filter: grayscale(30%);
 }
 
-/* Responsive box shadow */
-@media (max-width: 768px) {
-    .slideshow-container {
-      box-shadow: 30px 10px 10px 10px rgba(0, 0, 0, 0.1);
-    }
-}
-
   .slide {
     float: left; /* Float images to the left */
     width: 100%;
@@ -96,6 +89,35 @@
     width: 30px; /* Adjust as needed */
     height: auto;
   }
+
+
+  @media (max-width: 720px){
+  
+  .logo {
+  position: fixed;
+  top: 10px; /* Adjust as needed */
+  left: 10px; /* Adjust as needed */
+  width: auto;
+  height: 45px;
+  margin-left:-30px;
+  }
+
+  .shadow-wrap{
+  margin-left:-330px;
+  padding: auto;
+  } 
+
+ .slideshow-container {
+  display:none; 
+  }
+.logo {
+    position: fixed;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    width: auto;
+    height: 45px;
+  }
+  )
 </style>
   <body>
    

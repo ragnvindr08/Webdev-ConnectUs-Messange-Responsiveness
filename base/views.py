@@ -84,3 +84,5 @@ def messages_home(request):
     else:
         received_messages = Message.objects.filter(receiver=request.user)
         return render(request, 'homemessage.html', {'received_messages': received_messages}) # Assuming 'messages' is the correct name of the URL pattern
+    
+
